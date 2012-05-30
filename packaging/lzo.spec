@@ -7,6 +7,7 @@ Group:      System/Libraries
 License:    GPLv2+
 URL:        http://www.oberhumer.com/opensource/lzo/
 Source0:    http://www.oberhumer.com/opensource/lzo/download/%{name}-%{version}.tar.gz
+Source1001: packaging/lzo.manifest 
 Requires(post): /sbin/ldconfig
 Requires(postun): /sbin/ldconfig
 BuildRequires:  zlib-devel
@@ -51,6 +52,7 @@ This package contains development files needed for lzo.
 
 
 %build
+cp %{SOURCE1001} .
 
 %configure --disable-static \
     --disable-dependency-tracking \
@@ -87,17 +89,20 @@ install -p -m 644 minilzo/minilzo.h $RPM_BUILD_ROOT%{_includedir}/lzo
 
 
 %files
+%manifest lzo.manifest
 %defattr(-,root,root,-)
 %doc AUTHORS COPYING THANKS NEWS
 %{_libdir}/liblzo2.so.*
 
 
 %files minilzo
+%manifest lzo.manifest
 %defattr(-,root,root,-)
 %doc minilzo/README.LZO
 %{_libdir}/libminilzo.so.0
 
 %files devel
+%manifest lzo.manifest
 %defattr(-,root,root,-)
 %doc doc/LZOAPI.TXT doc/LZO.FAQ doc/LZO.TXT
 %{_includedir}/lzo
