@@ -65,6 +65,9 @@ gcc %{optflags} -O2 -g -fpic -Iinclude/lzo -o minilzo/minilzo.o -c minilzo/minil
 gcc -g -shared -o libminilzo.so.0 -Wl,-soname,libminilzo.so.0 minilzo/minilzo.o
 %install
 rm -rf %{buildroot}
+mkdir -p %{buildroot}/usr/share/license
+cp COPYING %{buildroot}/usr/share/license/%{name}
+
 %make_install 
 
 install -m 755 libminilzo.so.0 $RPM_BUILD_ROOT%{_libdir}
@@ -90,6 +93,7 @@ install -p -m 644 minilzo/minilzo.h $RPM_BUILD_ROOT%{_includedir}/lzo
 %defattr(-,root,root,-)
 %doc AUTHORS COPYING THANKS NEWS
 %{_libdir}/liblzo2.so.*
+/usr/share/license/%{name}
 
 
 %files minilzo
