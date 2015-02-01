@@ -12,6 +12,7 @@ Requires(post): /sbin/ldconfig
 Requires(postun): /sbin/ldconfig
 BuildRequires:  zlib-devel
 
+
 %description
 LZO is a portable lossless data compression library written in ANSI C.
 It offers pretty fast compression and very fast decompression.
