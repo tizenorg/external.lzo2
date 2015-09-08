@@ -1,7 +1,8 @@
+#sbs-git:slp/pkgs/l/lzo2 lzo 2.03 f23927fa0071821e6b71645b44b52c7a458eafa4
 
 Name:       lzo
 Summary:    Data compression library with very fast (de)compression
-Version:    2.03
+Version: 2.03
 Release:    1
 Group:      System/Libraries
 License:    GPLv2+
@@ -71,7 +72,8 @@ install -m 755 libminilzo.so.0 $RPM_BUILD_ROOT%{_libdir}
 ln -s libminilzo.so.0 $RPM_BUILD_ROOT%{_libdir}/libminilzo.so
 install -p -m 644 minilzo/minilzo.h $RPM_BUILD_ROOT%{_includedir}/lzo
 
-
+mkdir -p %{buildroot}/usr/share/license	75
+cp -f COPYING %{buildroot}/usr/share/license/%{name}
 
 %post -p /sbin/ldconfig
 
@@ -90,7 +92,7 @@ install -p -m 644 minilzo/minilzo.h $RPM_BUILD_ROOT%{_includedir}/lzo
 %defattr(-,root,root,-)
 %doc AUTHORS COPYING THANKS NEWS
 %{_libdir}/liblzo2.so.*
-
+/usr/share/license/%{name}
 
 %files minilzo
 %defattr(-,root,root,-)
