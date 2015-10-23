@@ -5,7 +5,7 @@ Summary:    Data compression library with very fast (de)compression
 Version: 2.03
 Release:    1
 Group:      System/Libraries
-License:    GPLv2+
+License:    GPL-2.0+
 URL:        http://www.oberhumer.com/opensource/lzo/
 Source0:    http://www.oberhumer.com/opensource/lzo/download/%{name}-%{version}.tar.gz
 Requires(post): /sbin/ldconfig
@@ -66,7 +66,7 @@ gcc %{optflags} -O2 -g -fpic -Iinclude/lzo -o minilzo/minilzo.o -c minilzo/minil
 gcc -g -shared -o libminilzo.so.0 -Wl,-soname,libminilzo.so.0 minilzo/minilzo.o
 %install
 rm -rf %{buildroot}
-%make_install 
+%make_install
 
 install -m 755 libminilzo.so.0 $RPM_BUILD_ROOT%{_libdir}
 ln -s libminilzo.so.0 $RPM_BUILD_ROOT%{_libdir}/libminilzo.so
